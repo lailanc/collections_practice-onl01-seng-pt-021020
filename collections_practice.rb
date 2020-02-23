@@ -1,88 +1,54 @@
-def sort_array_asc(array)
-  array.sort
+def sort_array_asc(integers)
+  integers.sort
 end
 
-sort_array_asc([25, 7, 1]) #[1,7,25]
-
-def sort_array_desc(array)
-  array.sort do | left, right|
-    right <=> left
-  end
+def sort_array_desc(integers)
+  integers.sort {|first_num, second_num| second_num <=> first_num}
 end
 
-sort_array_desc([25, 7, 14]) #[25, 14, 7]
-
-def sort_array_char_count(array)
-  array.sort do |left, right|
-    left.length <=> right.length
-  end
+def sort_array_char_count(strings)
+  strings.sort {|left, right| left.length <=> right.length}
 end
 
-sort_array_char_count(["dogs", "cat", "Horses"]) #["cat", "dogs", "Horses"]
-
-def swap_elements(array)
-  array[1], array[2] = array[2], array[1]
-  array
+def swap_elements(strings)
+  strings[1], strings[2] = strings[2], strings[1]
+  return strings
 end
 
-swap_elements(["blake", "ashley", "scott"]) #["blake", "scott", "ashley"]
-
-def reverse_array(array)
-  array.reverse
+def swap_elements_from_to(array, index, destination_index)
+  array[index], array[destination_index] = array[destination_index], array[index]
+  return array
 end
 
-reverse_array(["blake", "ashley", "scott"]) #["scott", "ashley", "blake"]
+def reverse_array(integers)
+  new_array = integers.reverse
+  new_array
+end
 
 def kesha_maker(array)
-  array.each do |item|
-    item[2] = "$"
+  kesha = []
+  array.each do |word|
+    word_array = word.split ""
+    word_array[2] = "$"
+    kesha << word_array.join
   end
+  kesha
 end
-
-kesha_maker(["blake", "ashley", "scott"]) #["bl$ke", "as$ley", "sc$tt"]
 
 def find_a(array)
-  array.find_all do |word|
-    word[0] == "a"
-  end
-
-  # using select method
-    # array.select do |word|
-    #   word[0] == "a"
-    # end
+  array.select{|string| string.start_with?("a")}
 end
 
-find_a(["apple", "orange", "pear", "avis", "arlo", "ascot" ]) #["apple", "avis", "arlo", "ascot"]
-
-def sum_array(array)
-  sum = 0
-  array.each do |num|
-    sum+=num
-  end
-  sum
-end 
-  # using reduce method
-    # array.reduce(:+)
-
-  # using inject method (short)
-     # array.inject(:+)
-
-  # using inject method (long)
-     # array.inject do |sum,x|
-     #  sum + x
-     # end
+def sum_array(integers)
+  integers.inject{|sum, n| sum + n}
 end
-
-sum_array([11,4,7,8,9,100,134]) #273
 
 def add_s(array)
-  array.collect do |word|
-    if array[1] == word
-      word
+  array.each_with_index.collect do |string, index|
+    if index == 1
+      string
     else
-      word + "s"
+      string << "s"
     end
   end
 end
-
-add_s(["hand","feet", "knee", "table"]) #["hands","feet", "knees", "tables"]
