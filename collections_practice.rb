@@ -47,10 +47,7 @@ def find_a(array)
     word[0] == "a"
   end
 
-  # using select method
-    # array.select do |word|
-    #   word[0] == "a"
-    # end
+  
 end
 
 find_a(["apple", "orange", "pear", "avis", "arlo", "ascot" ]) #["apple", "avis", "arlo", "ascot"]
@@ -62,16 +59,7 @@ def sum_array(array)
   end
   sum
 end 
-  # using reduce method
-    # array.reduce(:+)
-
-  # using inject method (short)
-     # array.inject(:+)
-
-  # using inject method (long)
-     # array.inject do |sum,x|
-     #  sum + x
-     # end
+ 
 end
 
 sum_array([11,4,7,8,9,100,134]) #273
