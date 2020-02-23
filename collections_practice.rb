@@ -33,6 +33,7 @@ end
 
 reverse_array(["blake", "ashley", "scott"]) #["scott", "ashley", "blake"]
 
+# DO NOT USE .collect or .map. use .each to build a new array, like in the "my_each" lab!
 def kesha_maker(array)
   array.each do |item|
     item[2] = "$"
